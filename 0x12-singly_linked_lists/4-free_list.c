@@ -9,18 +9,14 @@
 */
 void free_list(list_t *head)
 {
-	list_t *current;
+	list_t *next_node;
 
-	/**
-	 * while current head is not NULL
-	 * set head as the next node and
-	 * free the current node str then
-	 * free current node.
-	*/
-	while ((current = head) != NULL)
+	while (head != NULL)
 	{
-		head = head->next;
-		free(current->str);
-		free(current);
+		next_node = head->next;
+		free(head->str);
+		free(head);
+		head = next_node;
 	}
 }
+
