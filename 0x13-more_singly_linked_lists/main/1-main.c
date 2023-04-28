@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 #include "../lists.h"
 
@@ -26,7 +25,7 @@ int main(void)
 	new->next = head;
 	head = new;
 	n = listint_len(head);
-	printf("-> %lu elements\n", n);
+	printf("Number of elements: %lu\n", n);
 	free(new);
 	return (0);
 }
