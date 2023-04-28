@@ -1,19 +1,32 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../lists.h"
 
+/**
+ * main - check the code
+ * 
+ * Return: Always 0.
+ */
 int main(void)
 {
-    listint_t *head = NULL; // initialize head pointer to NULL
-    int n = 9; // set value to add to list
-    head = add_nodeint(&head, n); // add new node with value n to beginning of list
-    if (head == NULL) // check if add_nodeint() failed
+    listint_t *head;
+    listint_t *new;
+    listint_t hello = {8, NULL};
+    size_t n;
+
+    head = &hello;
+    new = malloc(sizeof(listint_t));
+    if (new == NULL)
     {
-        printf("Error: add_nodeint() failed\n");
+        printf("Error\n");
         return (1);
     }
-    size_t num_nodes = print_listint(head); // print the list and get the number of nodes
-    printf("-> %lu elements\n", num_nodes);
-    free_listint(head); // free the memory allocated for the list
+    new->n = 9;
+    new->next = head;
+    head = new;
+    n = print_listint(head);
+    printf("-> %lu elements\n", n);
+    free(new);
     return (0);
 }
