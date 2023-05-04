@@ -14,9 +14,6 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
   unsigned int count = 0;
 
-  
-
-
 	// Count the number of bits that need to be flipped
   while (n != m) {
     if (n & 1) {
@@ -24,7 +21,6 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
       count++;
     }
     n >>= 1;
-	m >>= 1;
   }
 
   return count;
