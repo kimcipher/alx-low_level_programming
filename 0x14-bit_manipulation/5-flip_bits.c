@@ -1,29 +1,27 @@
-#include "main.h"
-
 /**
- * flip_bits - a function that returns the number of bits you
- *             would need to flip to get from one number to
- *             another
- *
- * @n: decimal number
- * @m: the other decimal number
- *
- * Return: number of bits to flip to get @m from @n
-*/
+ * countSetBits - counts set bits in parameter n
+ * @n: XOR value passed flip_bits arguments
+ * Return: set Bits
+ */
+int countSetBits(int n)
+{
+	unsigned int count;
+
+	count = 0;
+	while (n > 0)
+	{
+		count++;
+		n &= (n - 1);
+	}
+	return (count);
+}
+/**
+ * flip_bits - number of bits to flip
+ * @n: from n
+ * @m: to m
+ * Return: bits to flip
+ */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-  unsigned int count = 0;
-
-  while (n != m) {
-    if (n & 1) {
-      m ^= 1;
-      count++;
-    }
-    n >>= 1;
-	m >>= 1;
-  }
-
-  return count;
+	return (countSetBits(n ^ m));
 }
-
-
