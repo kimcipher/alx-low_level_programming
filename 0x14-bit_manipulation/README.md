@@ -91,23 +91,8 @@
 6. [Endianness](./100-get_endianness.c) : A function that checks the endianness.
 	- Prototype: `int get_endianness(void);`
 	- Returns: `0` if big endian, `1` if little endian.
-	- Read more about it [here](https://cs-fundamentals.com/tech-interview/c/c-program-to-check-little-and-big-endian-architecture).
-	- Confirm your architecture version:
-		```sh
-		julien@ubuntu:~/0x14. Binary$ lscpu | head
-		Architecture:          x86_64
-		CPU op-mode(s):        32-bit, 64-bit
-		Byte Order:            Little Endian
-		CPU(s):                1
-		On-line CPU(s) list:   0
-		Thread(s) per core:    1
-		Core(s) per socket:    1
-		Socket(s):             1
-		NUMA node(s):          1
-		Vendor ID:             GenuineIntel
-		julien@ubuntu:~/0x14. Binary$
-		```
 	
-7. [Crackme3](./101-password) : Find the password for this [program](https://github.com/holbertonschool/0x13.c/blob/master/crackme3).
-	- Get the file this way: `curl -fsSL https://raw.githubusercontent.com/holbertonschool/0x13.c/master/crackme3 -o crackme3`
-	- Will revisit this challenge and explain how to solve it.
+		
+	
+7. [Crackme3](./101-password)
+	
