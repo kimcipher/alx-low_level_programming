@@ -27,39 +27,16 @@ void print_bin(unsigned long int number)
 */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int diff_bits = 0;
-	unsigned long int diff;
+  unsigned int count = 0;
 
-	/*xor n and b*/
-	diff = n ^ m;
+  while (n != m) {
+    if (n & 1) {
+      m ^= 1;
+      count++;
+    }
+    n >>= 1;
+  }
 
-	#ifdef DEBUG
-	printf("\n(n) %ld and (m) %ld in binary is ", n, m);
-	print_bin(n);
-	printf(" ");
-	print_bin(m);
-	printf(" diff is %ld and in binary is ", diff);
-	print_bin(diff);
-	printf("\n");
-	#endif
-
-	/*keep shifting diff to right*/
-	do {
-		#ifdef DEBUG
-		printf("diff %ld before right shift ", diff);
-		print_bin(diff);
-		printf("\n");
-		#endif
-
-		diff_bits += (diff & 1);
-		diff >>= 1;
-
-		#ifdef DEBUG
-		printf("diff %ld after right shift ", diff);
-		print_bin(diff);
-		printf(" and diff_bit %d before leaving loop\n\n", diff_bits);
-		#endif
-	} while (diff > 0);
-
-	return (diff_bits);
+  return count;
 }
+

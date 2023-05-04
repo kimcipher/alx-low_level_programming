@@ -10,17 +10,17 @@
  * debug_1 - print debug statements
  *
  * @n: value of n
- * @length: length of n
+ * @len: len of n
  * @mask: mask of n
  *
  * Return: nothing
 */
-void debug_1(unsigned long int n, int length, unsigned long int mask)
+void debug_1(unsigned long int n, int len, unsigned long int mask)
 {
-	printf("Length of %lu (n) is %i ", n, (length + 1));
+	printf("len of %lu (n) is %i ", n, (len + 1));
 	printf("and mask (original value 1) ");
 	printf("is %lu based ", mask);
-	printf("on [length of n - 1] == %i.\n\n", length);
+	printf("on [len of n - 1] == %i.\n\n", len);
 }
 
 
@@ -52,15 +52,15 @@ void debug_3(unsigned long int mask)
 }
 
 /**
- * _length - find the length of @n
+ * _len - find the len of @n
  *
- * @n: value to find its length
+ * @n: value to find its len
  *
- * Return: length
+ * Return: len
 */
-int _length(unsigned long int n)
+int _len(unsigned long int n)
 {
-	int length = 0;
+	int len = 0;
 
 	while (n > 0)
 	{
@@ -68,7 +68,7 @@ int _length(unsigned long int n)
 		printf("Value of n is %lu before right shifting by one.\n\n", n);
 		#endif
 
-		length++;
+		len++;
 		n >>= 1; /*shift n to the right by 1*/
 
 		#ifdef DEBUG
@@ -76,9 +76,9 @@ int _length(unsigned long int n)
 		#endif
 	}
 
-	length--;
+	len--;
 
-	return (length);
+	return (len);
 }
 
 /**
@@ -90,32 +90,20 @@ int _length(unsigned long int n)
 */
 void print_binary(unsigned long int n)
 {
-	int length;
 	unsigned long int mask = 1;
+	int len = 0;
 
-	length = _length(n);
+	while ((n >> len) > 0)
+		len++;
 
-	if (length > 0) /*create mask based on length of number*/
-		mask <<= length; /*shift mask to the left by length*/
-	#ifdef DEBUG
-	debug_1(n, length, mask);
-	#endif
+	len--;
 
-	while (mask > 0)
+	while (len >= 0)
 	{
-		#ifdef DEBUG
-		debug_2(n, mask);
-		#endif
-
-		if (n & mask) /*if n & mask == 1 print 1*/
+		if ((n >> len) & mask)
 			_putchar('1');
-		else /*else if n & mask == 0 print 0*/
+		else
 			_putchar('0');
-
-		mask >>= 1; /*shift mask to the right by 1*/
-
-		#ifdef DEBUG
-		debug_3(mask);
-		#endif
+		len--;
 	}
 }
