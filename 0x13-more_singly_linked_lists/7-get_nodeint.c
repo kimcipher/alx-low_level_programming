@@ -10,16 +10,16 @@
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-    unsigned int i;
+unsigned int i;
 
-    /* iterate through nodes in list until the index-th node is found or end of list is reached */
-    for (i = 0; i < index && head != NULL; i++)
-        head = head->next;
+/* iterate through nodes in list until the index-th node is found or end of list is reached */
+for (i = 0; i < index && head != NULL; i++)
+    head = head->next;
 
-    /* if index is greater than the number of nodes in the list, return NULL */
-    if (i < index)
-        return (NULL);
+/* if index is greater than the number of nodes in the list, return NULL */
+if (i < index)
+    return (NULL);
 
-    /* otherwise, return the node at the given index */
+/* otherwise, return the node at the given index */
     return (head);
 }
