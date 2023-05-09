@@ -3,10 +3,7 @@
 #include "../holberton.h"
 
 /**
- * main - check the code for ALX School students.
- *
- * @ac: argument counter
- * @av: argument vectors
+ * main - check the code =
  *
  * Return: Always 0.
  */
