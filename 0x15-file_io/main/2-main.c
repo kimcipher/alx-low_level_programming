@@ -3,7 +3,7 @@
 #include "../main.h"
 
 /**
- * main - check the code 
+ * main - check the code for ALX School students.
  *
  * @ac: argument counter
  * @av: argument vector
