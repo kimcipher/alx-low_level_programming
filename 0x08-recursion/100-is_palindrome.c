@@ -9,15 +9,10 @@
  */
 int _strlen(char *s)
 {
-	int len = 0;
+	if (*s == '\0')
+		return (0);
 
-	while (*s != '\0')
-	{
-		len++;
-		s++;
-	}
-
-	return (len);
+	return (1 + _strlen(s + 1));
 }
 
 /**
@@ -31,14 +26,10 @@ int _strlen(char *s)
 int is_palindrome_recursive(char *s, int start, int end)
 {
 	if (start >= end)
-	{
 		return (1);
-	}
 
 	if (s[start] != s[end])
-	{
 		return (0);
-	}
 
 	return (is_palindrome_recursive(s, start + 1, end - 1));
 }
