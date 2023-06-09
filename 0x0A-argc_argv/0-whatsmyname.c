@@ -1,6 +1,20 @@
-#include <stdio.h>
+#include<stdio.h>
+#include <stdlib.h>
+/**
+*main - program entry point
+*
+*@argc:  number of arguments passed
+*@argv: an array of pointers containing the strings passed
+*
+* Return: always return 0 (success)
+*/
 
-int main(int argc, char *argv[]) {
-    printf("%s\n", argv[0]);
-    return 0;
+int main(int __attribute__((unused)) argc, char *argv[])
+{
+
+	int i = 0;
+
+	printf("%s\n", argv[i]);
+
+	return (0);
 }
