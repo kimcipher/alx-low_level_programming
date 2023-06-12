@@ -23,7 +23,7 @@ int wordcount(char *str)
             ws++;
         }
     }
-    return (ws);
+    return ws;
 }
 
 /**
@@ -60,13 +60,13 @@ char **strtow(char *str)
     char **string;
 
     if (str == NULL || *str == '\0')
-        return (NULL);
+        return NULL;
 
     str_len = wordcount(str);
 
     string = malloc((str_len + 1) * sizeof(char *));
     if (str_len == 0 || string == NULL)
-        return (NULL);
+        return NULL;
 
     for (i = s = 0; i < str_len; i++)
     {
@@ -81,7 +81,7 @@ char **strtow(char *str)
                 if (string[i] == NULL)
                 {
                     fr(string, i);
-                    return (NULL);
+                    return NULL;
                 }
                 break;
             }
@@ -92,5 +92,5 @@ char **strtow(char *str)
         string[i][j] = '\0';
     }
     string[i] = NULL;
-    return (string);
+    return string;
 }
