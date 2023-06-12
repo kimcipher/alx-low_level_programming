@@ -9,14 +9,12 @@
  */
 int count_words(char *str)
 {
-	int i, count, in_word;
+	int count = 0;
+	int in_word = 0;
 
-	count = 0;
-	in_word = 0;
-
-	for (i = 0; str[i] != '\0'; i++)
+	while (*str)
 	{
-		if (str[i] != ' ')
+		if (*str != ' ')
 		{
 			if (!in_word)
 			{
@@ -28,9 +26,25 @@ int count_words(char *str)
 		{
 			in_word = 0;
 		}
+		str++;
 	}
 
-	return (count);
+	return count;
+}
+
+/**
+ * free_words - Frees the allocated memory for the words array.
+ * @words: The array of words.
+ * @index: The current index.
+ */
+void free_words(char **words, int index)
+{
+	while (index >= 0)
+	{
+		free(words[index]);
+		index--;
+	}
+	free(words);
 }
 
 /**
@@ -46,25 +60,25 @@ char **strtow(char *str)
 	int i, j, k, len, word_count;
 
 	if (str == NULL || *str == '\0')
-		return (NULL);
+		return NULL;
 
 	word_count = count_words(str);
 	if (word_count == 0)
-		return (NULL);
+		return NULL;
 
 	words = malloc((word_count + 1) * sizeof(char *));
 	if (words == NULL)
-		return (NULL);
+		return NULL;
 
 	i = 0;
 	j = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] != ' ')
 		{
 			len = 0;
 			k = i;
-			while (str[k] != ' ' && str[k] != '\0')
+			while (str[k] && str[k] != ' ')
 			{
 				len++;
 				k++;
@@ -73,13 +87,8 @@ char **strtow(char *str)
 			words[j] = malloc((len + 1) * sizeof(char));
 			if (words[j] == NULL)
 			{
-				while (j > 0)
-				{
-					j--;
-					free(words[j]);
-				}
-				free(words);
-				return (NULL);
+				free_words(words, j - 1);
+				return NULL;
 			}
 
 			for (k = 0; k < len; k++, i++)
@@ -95,5 +104,5 @@ char **strtow(char *str)
 
 	words[j] = NULL;
 
-	return (words);
+	return words;
 }
